@@ -1,0 +1,114 @@
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+
+class House {
+public:
+    string address;
+    int year_built;
+};
+
+class dog {
+public:
+    string name;
+    string breed;
+    int age;
+    void bark() {
+        cout << name << " says Woof!" << endl;
+    }
+};
+
+class person {
+public:
+    string name;
+    int age;
+    dog pet;
+    House house;
+
+    void introducePet() {
+        cout << "My dog's name is " << pet.name << endl;
+        cout << "My dog's breed is " << pet.breed << endl;
+        cout << "My dog's age is " << pet.age << endl;
+        pet.bark();
+    }
+
+    void displayAddress() {
+        cout << "I live in " << house.address << endl;
+        cout << "My house was built in " << house.year_built << endl;
+    }
+    
+    void changePet(dog newPet) {
+        pet = newPet;
+        cout << "I got a new dog!" << endl;
+    }
+};
+
+class Neighborhood {
+private:
+    vector<House> houses;
+    vector<person> residents;
+
+public:
+    void addHouse(House newHouse) {
+        //To add new Houses
+        houses.push_back(newHouse);
+    }
+//To add new residents
+    void addResident(person newResident) {
+        residents.push_back(newResident);
+    }
+//To Display All info
+    void displayNeighborhoodInfo() {
+        cout << "Neighborhood Information:" << endl;
+        for (size_t i = 0; i < houses.size(); ++i) {
+            cout << "House at " << houses[i].address <<endl;
+            cout<<"Constructed in " << houses[i].year_built << endl;
+            cout << "Residents:" << endl;
+            for (size_t j = 0; j < residents.size(); ++j) {
+                if (residents[j].house.address == houses[i].address) {
+                    cout << residents[j].name << endl;
+                }
+            }
+            cout << endl;
+        }
+    }
+};
+
+int main() {
+    Neighborhood myNeighborhood;
+
+    // Adding houses to the neighborhood
+    House house1, house2, house3;
+    house1.address = "Sharjah Avenue 2nd street";
+    house1.year_built = 1999;
+    
+    house2.address = "205 bulmingal street 7";
+    house2.year_built = 2015;
+    
+    house3.address = "Main boulevaard street 5";
+    house3.year_built = 2019;
+    
+    myNeighborhood.addHouse(house1);
+    myNeighborhood.addHouse(house2);
+    myNeighborhood.addHouse(house3);
+    
+    // Adding residents to the neighborhood
+    person resident1, resident2, resident3;
+    resident1.name = "Awais Ishaq";
+    resident1.house = house1;
+
+    resident2.name = "Rahimullah Khan and Sadiq Khan";
+    resident2.house = house2;
+    
+    resident3.name = "Arshad Saleem";
+    resident3.house = house3;
+    
+    myNeighborhood.addResident(resident1);
+    myNeighborhood.addResident(resident2);
+    myNeighborhood.addResident(resident3);
+    // Display information
+    myNeighborhood.displayNeighborhoodInfo();
+    
+    return 0;
+}

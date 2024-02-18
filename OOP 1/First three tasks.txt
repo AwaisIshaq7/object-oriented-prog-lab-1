@@ -1,0 +1,65 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+class House 
+{
+public:
+    string address;
+    int year_built;
+};
+class dog
+{
+public:
+    string name;
+    string breed;
+    int age;
+    void bark() {
+        cout << name << " Says Woof!" << endl;
+    }
+};
+class person 
+{
+public:
+    string name;
+    int age;
+    dog pet;
+    House house;
+    void introducepet() 
+    {  
+        cout << "My dog name is " << pet.name << endl;
+        cout << "My dog breed is " << pet.breed << endl;
+        cout << "My dog age is " << pet.age << endl;
+        pet.bark();
+    }
+    void displayAddress()
+    {
+        cout << "I live in " << house.address << endl;
+        cout << "My house was built in " << house.year_built << endl;    }
+};
+int main() {
+    person Person1, Person2;
+    cout << "Person 1 Details : " << endl;
+    Person1.name = "Awais Ishaq";
+    Person1.pet.name = "Tom";
+    Person1.pet.breed = "German";
+    Person1.pet.age = 5;
+    Person1.house.address = "Defence";
+    Person1.house.year_built = 1999;
+    cout << Person1.name << endl;
+    Person1.displayAddress();
+    Person1.introducepet();
+    cout << endl;
+  
+    cout << "Person 2 Details : " << endl;
+    Person2.name = "Ali khan";
+    Person2.pet.name = "Maxi";
+    Person2.pet.breed = "Husky";
+    Person2.pet.age = 7;
+    Person2.house.address = "near station";
+    Person2.house.year_built = 2008;
+    cout << Person2.name << endl;
+    Person2.displayAddress();
+    Person2.introducepet();
+    return 0;
+}

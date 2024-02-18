@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Vehicle {
+private:
+    string make;
+    string model;
+    int year;
+    int mileage; 
+
+public:
+    Vehicle(string mk, string mdl, int yr, int ml) : make(mk), model(mdl), year(yr), mileage(ml) {}
+
+    // Setter methods
+    void setMake(string mk) { make = mk; }
+    void setModel(string mdl) { model = mdl; }
+    void setYear(int yr) { year = yr; }
+    void setMileage(int ml) { mileage = ml; } 
+
+    // to display vehicle information
+    void displayVehicleInfo() {
+        cout << "Make: " << make <<endl<< " Model: " << model <<endl<< " Year: " << year <<endl<< " Mileage: " <<endl<< mileage << " miles" << endl;
+    }
+    bool needsServicing() {
+        //  threshold mileage for servicing, is 55000 miles
+        const int serviceneeded = 55000;
+        return (mileage >= serviceneeded);
+    }
+};
+
+int main() {
+    // Create a Vehicle object
+    Vehicle myVehicle("Toyota", "Corolla", 2020, 49000);
+
+  
+    cout << "Initial Vehicle Details:" << endl;
+    myVehicle.displayVehicleInfo();
+ 
+    if (myVehicle.needsServicing()) {
+        cout << "\nThe car needs servicing!" << endl;
+    } else {
+        cout << "\nThe car does not need servicing at the moment." << endl;
+    }
+    // Set new details using setModel, setYear, and setMileage
+    myVehicle.setModel("Camry");
+    myVehicle.setYear(2022);
+    myVehicle.setMileage(57000);
+
+    // Display updated details
+    cout << "\nUpdated Vehicle Details:" << endl;
+    myVehicle.displayVehicleInfo();
+
+    if (myVehicle.needsServicing()) {
+        cout << "\nThe car needs servicing!" << endl;
+    } else {
+        cout << "\nThe car does not need servicing at the moment." << endl;
+    }
+    return 0;
+}

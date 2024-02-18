@@ -1,0 +1,85 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+class House {
+public:
+    string address;
+    int year_built;
+};
+
+class dog {
+public:
+    string name;
+    string breed;
+    int age;
+    void bark() {
+        cout << name << " says Woof!" << endl;
+    }
+};
+
+class person {
+public:
+    string name;
+    int age;
+    dog pet;
+    House house;
+
+    void introducepet() {
+        cout << "My dog's name is " << pet.name << endl;
+        cout << "My dog's breed is " << pet.breed << endl;
+        cout << "My dog's age is " << pet.age << endl;
+        pet.bark();
+    }
+
+    void displayAddress() {
+        cout << "I live in " << house.address << endl;
+        cout << "My house was built in " << house.year_built << endl;
+    }
+    
+
+    //  to change the owner's dog
+    void changePet(dog newPet) {
+        pet = newPet;
+        cout << "I got a new dog! " << endl;
+    }
+};
+
+int main() {
+    person Person1, Person2;
+
+    // Person 1 details
+    cout << "Person 1 Details:" << endl;
+    Person1.name = "Awais";
+    Person1.pet.name = "Bob";
+    Person1.pet.breed = "German";
+    Person1.pet.age = 5;
+    Person1.house.address = "Defence";
+    Person1.house.year_built = 1990;
+    cout <<"My name is "<<Person1.name<<endl;
+    Person1.displayAddress();
+    Person1.introducepet();
+    cout << endl;
+
+    dog newDogForPerson1;
+    cout<<"Enter new dog name: ";
+    cin>>newDogForPerson1.name;
+    newDogForPerson1.breed = "Bulldog";
+    newDogForPerson1.age = 7;
+    Person1.changePet(newDogForPerson1);
+    Person1.introducepet();
+    cout << endl;
+
+    cout << "Person 2 Details:" << endl;
+    Person2.name = "Rahim Khan";
+    Person2.pet.name = "Tom";
+    Person2.pet.breed = "Husky";
+    Person2.pet.age = 4;
+    Person2.house.address = "Station";
+    Person2.house.year_built = 2011;
+    cout <<"My name is "<< Person2.name<<endl; 
+    Person2.displayAddress();
+    Person2.introducepet();
+
+    return 0;
+}
